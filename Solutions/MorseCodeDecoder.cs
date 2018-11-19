@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 /// <summary>
 /// Solution for the morse code kata.
@@ -18,7 +19,15 @@ namespace Solutions
         /// <returns></returns>
         public static string Decode(string morseCode)
         {
-            throw new NotImplementedException("Please provide some code.");
+            morseCode = morseCode
+                .Trim()
+                // Replacing triple spaces with doubles will split on space once instead of twice.
+                .Replace("   ", "  ");
+
+            return string.Concat(morseCode
+                .Split()
+                .Select(s => string.IsNullOrEmpty(s) ? ' ' : DecodeMorseLetter(s))
+                );
         }
 
         /// <summary>
