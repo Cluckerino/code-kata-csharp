@@ -20,5 +20,45 @@ namespace Solutions
         {
             throw new NotImplementedException("Please provide some code.");
         }
+
+        /// <summary>
+        /// Decode a string representing a single morse code letter.
+        /// </summary>
+        /// <param name="morseChar">The morse code letter to decode.</param>
+        /// <returns>The decoded char.</returns>
+        public static char DecodeMorseLetter(string morseLetter)
+        {
+            switch (morseLetter)
+            {
+                case ".-": return 'A';
+                case "-...": return 'B';
+                case "-.-.": return 'C';
+                case "-..": return 'D';
+                case ".": return 'E';
+                case "..-.": return 'F';
+                case "--.": return 'G';
+                case "....": return 'H';
+                case "..": return 'I';
+                case ".---": return 'J';
+                case "-.-": return 'K';
+                case ".-..": return 'L';
+                case "--": return 'M';
+                case "-.": return 'N';
+                case "---": return 'O';
+                case ".--.": return 'P';
+                case "--.-": return 'Q';
+                case ".-.": return 'R';
+                case "...": return 'T';
+                case "-": return 'S';
+                case "..-": return 'U';
+                case "...-": return 'V';
+                case ".--": return 'W';
+                case "-..-": return 'X';
+                case "-.--": return 'Y';
+                case "--..": return 'Z';
+                case " ": return ' ';
+                default: throw new InvalidOperationException($"Unknown morse code string: {morseLetter}");
+            }
+        }
     }
 }
