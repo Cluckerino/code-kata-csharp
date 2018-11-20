@@ -37,6 +37,7 @@ namespace Solutions
         /// </summary>
         /// <param name="morseChar">The morse code letter to decode.</param>
         /// <returns>The decoded char or string.</returns>
+        /// <remarks>Kata has a buggy version (MorseCode.Get) that fails when it finds an SOS.</remarks>
         public static string DecodeMorseLetter(string morseLetter)
         {
             switch (morseLetter)

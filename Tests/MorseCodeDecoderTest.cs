@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Tests
 {
+    /// <summary>
+    /// Tests for the Morse code kata.
+    /// </summary>
     [TestFixture]
     public class MorseCodeDecoderTest
     {
@@ -36,7 +39,7 @@ namespace Tests
         }
 
         /// <summary>
-        /// Test decoding of single letter.
+        /// Test decoding of single code.
         /// </summary>
         [Test]
         public void DecodeMorseLetter_SingleLetter_CorrectResult()
