@@ -22,40 +22,54 @@ namespace Tests
         }
 
         /// <summary>
+        /// Tests for failed cases with the SOS strings.
+        /// </summary>
+        /// <param name="input">The SOS string input.</param>
+        /// <param name="expected">The expected variation of SOS.</param>
+        [TestCase("...---...", "SOS", TestName = "Decode_SOSCodeSingle_ReturnsSOS")]
+        [TestCase("... --- ...", "SOS", TestName = "Decode_SOSCodeLetters_ReturnsSOS")]
+        [TestCase("...   ---   ...", "S O S", TestName = "Decode_SOSCodeSpaces_ReturnsSOS")]
+        public void Decode_SOSCodeTester(string input, string expected)
+        {
+            var actual = MorseCodeDecoder.Decode(input);
+            Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
         /// Test decoding of single letter.
         /// </summary>
         [Test]
         public void DecodeMorseLetter_SingleLetter_CorrectResult()
         {
-            var morseDictionary = new Dictionary<string, char>
+            var morseDictionary = new Dictionary<string, string>
             {
-                {".-", 'A' },
-                {"-...", 'B' },
-                {"-.-.", 'C' },
-                {"-..", 'D' },
-                {".", 'E' },
-                {"..-.", 'F' },
-                {"--.", 'G' },
-                {"....", 'H' },
-                {"..", 'I' },
-                {".---", 'J' },
-                {"-.-", 'K' },
-                {".-..", 'L' },
-                {"--", 'M' },
-                {"-.", 'N' },
-                {"---", 'O' },
-                {".--.", 'P' },
-                {"--.-", 'Q' },
-                {".-.", 'R' },
-                {"...", 'T' },
-                {"-", 'S' },
-                {"..-", 'U' },
-                {"...-", 'V' },
-                {".--", 'W' },
-                {"-..-", 'X' },
-                {"-.--", 'Y' },
-                {"--..", 'Z' },
-                {" ", ' ' },
+                {".-", "A" },
+                {"-...", "B" },
+                {"-.-.", "C" },
+                {"-..", "D" },
+                {".", "E" },
+                {"..-.", "F" },
+                {"--.", "G" },
+                {"....", "H" },
+                {"..", "I" },
+                {".---", "J" },
+                {"-.-", "K" },
+                {".-..", "L" },
+                {"--", "M" },
+                {"-.", "N" },
+                {"---", "O" },
+                {".--.", "P" },
+                {"--.-", "Q" },
+                {".-.", "R" },
+                {"...", "T" },
+                {"-", "S" },
+                {"..-", "U" },
+                {"...-", "V" },
+                {".--", "W" },
+                {"-..-", "X" },
+                {"-.--", "Y" },
+                {"--..", "Z" },
+                {" ", " " },
             };
 
             Assert.Multiple(() =>
