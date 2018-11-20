@@ -68,6 +68,7 @@ namespace Solutions
                 case "-.--": return "Y";
                 case "--..": return "Z";
                 case "...---...": return "SOS";
+                case "-.-.--": return "!";
                 case " ": return " ";
                 default: throw new InvalidOperationException($"Unknown morse code string: {morseLetter}");
             }
