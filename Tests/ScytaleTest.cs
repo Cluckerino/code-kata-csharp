@@ -58,5 +58,27 @@ namespace Tests
             var actual = Scytale.Decode(message, 6);
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Test encode-to-decode to get back the original plain text.
+        /// </summary>
+        [Test]
+        public void Scytale_EncodeToDecode_GetOriginalMessage()
+        {
+            var message = "CodeWars Scytale Kata";
+            var actual = Scytale.Decode(Scytale.Encode(message, 6), 6);
+            Assert.AreEqual(message, actual);
+        }
+
+        /// <summary>
+        /// Test decode-to-encode to get back the original cipher text.
+        /// </summary>
+        [Test]
+        public void Scytale_DecodeToEncode_GetOriginalMessage()
+        {
+            var message = "CW t aoaSaK drcla esyet";
+            var actual = Scytale.Encode(Scytale.Decode(message, 6), 6);
+            Assert.AreEqual(message, actual);
+        }
     }
 }
