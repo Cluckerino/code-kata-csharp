@@ -11,6 +11,33 @@ namespace Solutions
     public static class Scytale
     {
         /// <summary>
+        /// Print the rows to console for debugging.
+        /// </summary>
+        /// <param name="rows">The rows to print.</param>
+        private static void PrintRows(List<List<char>> rows)
+        {
+            if (rows.Count == 0 || rows[0].Count == 0) return;
+
+            var first = true;
+            var noOfStrips = rows[0].Count;
+            var bar = string.Concat(Enumerable.Repeat('-', 2 * noOfStrips - 1));
+
+            foreach (var row in rows)
+            {
+                if (first)
+                    first = false;
+                else
+                    Console.WriteLine(bar);
+
+                var rowToPrint = row.ToList();
+                while (rowToPrint.Count < noOfStrips)
+                    rowToPrint.Add(' ');
+
+                Console.WriteLine(string.Join("|", rowToPrint));
+            }
+        }
+
+        /// <summary>
         /// Decodes a coded message using a scytale with the given number of sides.
         /// </summary>
         /// <param name="message">The coded message to decode.</param>
@@ -37,9 +64,38 @@ namespace Solutions
             for (int i = 0; i < message.Length; i++)
                 rows[i % cylinderSides].Add(message[i]);
 
+            PrintRows(rows);
+
+            Console.WriteLine($"D (before) [{message.Length}]: \"{message}\"");
+
             // Join rows to create the message. Trim the ends.
-            return string.Concat(rows.SelectMany(r => r))
+            message = string.Concat(rows.SelectMany(r => r))
                 .TrimEnd();
+
+            Console.WriteLine($"D (after)  [{message.Length}]: \"{message}\"");
+
+            return message;
+        }
+
+        /// <summary>
+        /// Print the strips to console for debugging.
+        /// </summary>
+        /// <param name="strips">The strips to print.</param>
+        private static void PrintStrips(List<char[]> strips)
+        {
+            if (strips.Count == 0 || strips[0].Length == 0) return;
+
+            var noOfRows = strips[0].Length;
+            var bar = string.Concat(Enumerable.Repeat('-', 2 * strips.Count - 1));
+
+            for (int i = 0; i < noOfRows; i++)
+            {
+                if (i > 0) Console.WriteLine(bar);
+                var rowToPrint = strips
+                    .Select(s => i < s.Length ? s[i] : ' ');
+
+                Console.WriteLine(string.Join("|", rowToPrint));
+            }
         }
 
         /// <summary>
@@ -71,9 +127,17 @@ namespace Solutions
                 strips[stripInd][rowInd] = message[i];
             }
 
+            PrintStrips(strips);
+
+            Console.WriteLine($"E (before) [{message.Length}]: \"{message}\"");
+
             // Join rows to create the message. Trim the ends.
-            return string.Concat(strips.Select(r => new string(r)))
+            message = string.Concat(strips.Select(r => new string(r)))
                 .TrimEnd();
+
+            Console.WriteLine($"E (after)  [{message.Length}]: \"{message}\"");
+
+            return message;
         }
     }
 }
