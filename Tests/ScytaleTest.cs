@@ -42,7 +42,7 @@ namespace Tests
         public void Scytale_EncodeUneven()
         {
             var message = "CodeWars Scytale Kata";
-            var expected = "CW t aoaSaK drcla esyet";
+            var expected = "CW t aoaSaK drcla esyet ";
             var actual = Scytale.Encode(message, 6);
             Assert.AreEqual(expected, actual);
         }
@@ -76,7 +76,7 @@ namespace Tests
         [Test]
         public void Scytale_DecodeToEncode_GetOriginalMessage()
         {
-            var message = "CW t aoaSaK drcla esyet";
+            var message = "CW t aoaSaK drcla esyet ";
             var actual = Scytale.Encode(Scytale.Decode(message, 6), 6);
             Assert.AreEqual(message, actual);
         }
