@@ -131,9 +131,8 @@ namespace Solutions
 
             Console.WriteLine($"E (before) [{message.Length}]: \"{message}\"");
 
-            // Join rows to create the message. Trim the ends.
-            message = string.Concat(strips.Select(r => new string(r)))
-                .TrimEnd();
+            // Join rows to create the message.  DON'T Trim the ends since spaces are important in the final strip.
+            message = string.Concat(strips.Select(r => new string(r)));
 
             Console.WriteLine($"E (after)  [{message.Length}]: \"{message}\"");
 
