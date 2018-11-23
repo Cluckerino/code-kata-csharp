@@ -80,5 +80,18 @@ namespace Tests
             var actual = Scytale.Encode(Scytale.Decode(message, 6), 6);
             Assert.AreEqual(message, actual);
         }
+
+        /// <summary>
+        /// Encode-to-decode test from the Kata that failed.
+        /// </summary>
+        [Test]
+        public void Scytale_EncodeToDecode_FailedKataTest()
+        {
+            var message = "crpUefY qvFWUxfiSdjbhaHijRX rtHMYPMQHuYZoT SXUcMISaSIYokdmm ZdUJCGtm W  ";
+            var expected = "crpUefY qvFWUxfiSdjbhaHijRX rtHMYPMQHuYZoT SXUcMISaSIYokdmm ZdUJCGtm W";
+
+            var actual = Scytale.Decode(Scytale.Encode(message, 6), 6);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
