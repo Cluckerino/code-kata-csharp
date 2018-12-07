@@ -17,9 +17,18 @@ namespace Solutions
         /// <param name="n">Initial number of people in the permutation.</param>
         /// <param name="k">Steps until someone is eliminated.</param>
         /// <returns>The position of the survivor.</returns>
-        public static int JosSurvivor(int n, int k)
+        public static int JosSurvivor(int n, int k) => G(n, k) + 1;
+
+        /// <summary>
+        /// Zero-indexed version of the above.
+        /// </summary>
+        /// <param name="n">Initial number of people in the permutation.</param>
+        /// <param name="k">Steps until someone is eliminated.</param>
+        /// <returns>The zero-based position of the survivor.</returns>
+        private static int G(int n, int k)
         {
-            return 0;
+            if (n == 1) return 0;
+            return (G(n - 1, k) + k) % n;
         }
     }
 }
