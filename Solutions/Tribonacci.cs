@@ -20,7 +20,20 @@ namespace Solutions
         /// <returns>An array containing n terms of the Tribonacci sequence.</returns>
         public double[] Tribonacci(double[] signature, int n)
         {
-            return Enumerable.Empty<double>().ToArray();
+            var result = signature.ToList();
+            var bonacciLength = signature.Length;
+
+            while (result.Count < n)
+            {
+                var newSum = 0.0;
+                for (var i = 0; i < bonacciLength; i++)
+                {
+                    newSum += result[result.Count - i - 1];
+                }
+                result.Add(newSum);
+            }
+
+            return result.ToArray();
         }
     }
 }
