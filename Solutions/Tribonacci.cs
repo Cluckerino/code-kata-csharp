@@ -1,8 +1,8 @@
 using System.Linq;
 
 /// <summary>
-/// Solution Josephus survivor kata.
-/// See https://www.codewars.com/kata/josephus-survivor/csharp
+/// Solution for the tribonacci sequence kata.
+/// See https://www.codewars.com/kata/tribonacci-sequence/csharp
 /// </summary>
 namespace Solutions
 {
