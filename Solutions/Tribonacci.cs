@@ -23,6 +23,10 @@ namespace Solutions
             var result = signature.ToList();
             var bonacciLength = signature.Length;
 
+            // If n is less than the signature, don't bother with iterating, just take the first n terms.
+            if (bonacciLength > n)
+                return signature.Take(n).ToArray();
+
             while (result.Count < n)
             {
                 var newSum = 0.0;
