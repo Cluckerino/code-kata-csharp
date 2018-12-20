@@ -1,8 +1,8 @@
 using System.Linq;
 
 /// <summary>
-/// Solution Josephus survivor kata.
-/// See https://www.codewars.com/kata/josephus-survivor/csharp
+/// Solution for the tribonacci sequence kata.
+/// See https://www.codewars.com/kata/tribonacci-sequence/csharp
 /// </summary>
 namespace Solutions
 {
@@ -20,24 +20,7 @@ namespace Solutions
         /// <returns>An array containing n terms of the Tribonacci sequence.</returns>
         public double[] Tribonacci(double[] signature, int n)
         {
-            var result = signature.ToList();
-            var bonacciLength = signature.Length;
-
-            // If n is less than the signature, don't bother with iterating, just take the first n terms.
-            if (bonacciLength > n)
-                return signature.Take(n).ToArray();
-
-            while (result.Count < n)
-            {
-                var newSum = 0.0;
-                for (var i = 0; i < bonacciLength; i++)
-                {
-                    newSum += result[result.Count - i - 1];
-                }
-                result.Add(newSum);
-            }
-
-            return result.ToArray();
+            return GenericXbonacci(signature, n);
         }
     }
 }
